@@ -17,11 +17,8 @@ public class FriendshipUpdater {
             boolean wasLucky = !friend.isLucky;
 
             CheckIfLucky(friend);
-
             CheckIfNotLucky(wasLucky, friend);
-
             CheckIfInteraction(friend);
-
             CheckIfNotLuckyAndNoInteraction(wasLucky, friend);
         }
     }
