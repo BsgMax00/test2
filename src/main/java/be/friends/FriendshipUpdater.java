@@ -18,9 +18,7 @@ public class FriendshipUpdater {
 
             CheckIfLucky(friend);
 
-            if (!wasLucky){
-                friend.friendshipLevel += 4;
-            }
+            CheckIfNotLucky(wasLucky, friend);
 
             if (friend.didSomeInteractionToday) {
                 CheckIfAddStars(friend);
@@ -38,6 +36,12 @@ public class FriendshipUpdater {
     public void CheckIfLucky(Friend friend){
         if (friend.isLucky && friend.didSomeInteractionToday) {
             friend.isLucky = !friend.isLucky;
+        }
+    }
+
+    public void CheckIfNotLucky(boolean wasLucky, Friend friend){
+        if (!wasLucky){
+            friend.friendshipLevel += 4;
         }
     }
 
