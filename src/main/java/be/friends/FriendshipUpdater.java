@@ -22,10 +22,7 @@ public class FriendshipUpdater {
 
             CheckIfInteraction(friend);
 
-            if (!wasLucky && !friend.didSomeInteractionToday) {
-                friend.isLucky = true;
-                friend.friendshipLevel -= 4;
-            }
+            CheckIfNotLuckyAndNoInteraction(wasLucky, friend);
         }
     }
 
@@ -67,6 +64,13 @@ public class FriendshipUpdater {
         if (friend.nrOfStars != 3 && friend.friendshipLevel == 30) {
             friend.friendshipLevel = 0;
             friend.nrOfStars = friend.nrOfStars + 1;
+        }
+    }
+
+    public void CheckIfNotLuckyAndNoInteraction(boolean wasLucky, Friend friend){
+        if (!wasLucky && !friend.didSomeInteractionToday) {
+            friend.isLucky = true;
+            friend.friendshipLevel -= 4;
         }
     }
 }
