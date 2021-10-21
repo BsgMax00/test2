@@ -9,15 +9,20 @@ public class FriendshipUpdater {
     }
 
     public void update() {
+        FriendLoop();
+    }
+
+    public void FriendLoop(){
         for (Friend friend : friends) {
             boolean wasLucky = !friend.isLucky;
 
             CheckIfLucky(friend);
 
-            if (!wasLucky) friend.friendshipLevel += 4;
+            if (!wasLucky){
+                friend.friendshipLevel += 4;
+            }
 
             if (friend.didSomeInteractionToday) {
-
                 CheckIfAddStars(friend);
 
                 CheckIfNeedAddStars(friend);
@@ -30,8 +35,16 @@ public class FriendshipUpdater {
         }
     }
 
+    public void CheckIfLucky(Friend friend){
+        if (friend.isLucky && friend.didSomeInteractionToday) {
+            friend.isLucky = !friend.isLucky;
+        }
+    }
+
     public void CheckIfAddStars(Friend friend) {
-        if (friend.nrOfStars == 0) friend.nrOfStars++;
+        if (friend.nrOfStars == 0) {
+            friend.nrOfStars++;
+        }
         else {
             if (friend.friendshipLevel == 9) {
                 if (friend.nrOfStars == 1) {
@@ -47,12 +60,6 @@ public class FriendshipUpdater {
         if (friend.nrOfStars != 3 && friend.friendshipLevel == 30) {
             friend.friendshipLevel = 0;
             friend.nrOfStars = friend.nrOfStars + 1;
-        }
-    }
-
-    public void CheckIfLucky(Friend friend){
-        if (friend.isLucky && friend.didSomeInteractionToday) {
-            friend.isLucky = !friend.isLucky;
         }
     }
 }
