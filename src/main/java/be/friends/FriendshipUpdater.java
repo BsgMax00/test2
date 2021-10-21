@@ -47,13 +47,17 @@ public class FriendshipUpdater {
             friend.nrOfStars++;
         }
         else {
-            if (friend.friendshipLevel == 9) {
-                if (friend.nrOfStars == 1) {
-                    friend.friendshipLevel = -1;
-                    friend.nrOfStars = 2;
-                }
-            }
+            CheckFriendshipLvl(friend);
             friend.friendshipLevel++;
+        }
+    }
+
+    public void CheckFriendshipLvl(Friend friend){
+        if (friend.friendshipLevel == 9) {
+            if (friend.nrOfStars == 1) {
+                friend.friendshipLevel = -1;
+                friend.nrOfStars = 2;
+            }
         }
     }
 
